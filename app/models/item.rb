@@ -13,14 +13,18 @@ class Item < ApplicationRecord
     validates :image
     validates :name, length: { maximum: 40 }
     validates :info, length: { maximum: 1000 }
+    validates :price,
+              numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999,
+                              message: 'is out of setting range' }
+    validates :price, numericality: { only_integer: true, message: 'is invalid. Input half-width characters' }
+  end
+
+  # ジャンルの選択が「--」の時は保存できないようにする
+  with_options presence: true, numericality: { other_than: 1 } do
+    validates :category_id
+    validates :itemstatus_id
     validates :deliverycharge_id
     validates :prefecture_id
     validates :shippingday_id
-    validates :price
-  end
-
-  #ジャンルの選択が「--」の時は保存できないようにする
-  with_options presence: true, numericality: { other_than: 1 } do
-    validates :category_id
   end
 end
