@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :find_item, only: [:show, :edit, :update, :move_index]
   before_action :move_index, only: [:edit, :update]
+  before_action :find_item, only: [:show, :edit, :update]
 
   def index
     @items = Item.includes(:user).order('created_at desc')
@@ -41,11 +41,12 @@ class ItemsController < ApplicationController
                                  :shippingday_id, :price).merge(user_id: current_user.id)
   end
 
-  def find_item
+  def move_index
     @item = Item.find(params[:id])
+    redirect_to root_path unless @item.user.id == current_user.id
   end
 
-  def move_index
-    redirect_to root_path unless user_signed_in? && @item.user.id == current_user.id
+  def find_item
+    move_index
   end
 end
