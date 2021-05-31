@@ -1,0 +1,12 @@
+FactoryBot.define do
+  factory :purchase_address do
+    postal_code { '123-4567' }
+    prefecture_id { 12 }
+    city { '函館市' }
+    house_number { '1-1-1' }
+    telephone_number { '05012345678' }
+    building_name { 'テストビル50F' }
+    token { 'tok_9a01b13fefb7fd32b555f69730fc' }
+    user_id { 7 }
+  end
+end

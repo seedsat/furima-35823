@@ -10,6 +10,7 @@ class PurchaseAddress
     validates :city
     validates :house_number
     validates :telephone_number, numericality: { only_integer: true, message: "is invalid. Input only number" }
+    validates :telephone_number, format: { with: /\A\d{10,11}\z/, message: 'is out of setting range' }
     validates :token
     validates :user_id
   end
