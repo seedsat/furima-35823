@@ -65,6 +65,11 @@ RSpec.describe PurchaseAddress, type: :model do
         @purchase_address.valid?
         expect(@purchase_address.errors.full_messages).to include "Telephone number is invalid. Input only number"
       end
+      it '電話番号が半角数字のみでないと購入できない' do
+        @purchase_address.telephone_number = "123acf34h5d"
+        @purchase_address.valid?
+        expect(@purchase_address.errors.full_messages).to include "Telephone number is invalid. Input only number"
+      end
       it '電話番号が全角数字だと購入できない' do
         @purchase_address.telephone_number = "１１１１１１１１１１１"
         @purchase_address.valid?
@@ -75,7 +80,7 @@ RSpec.describe PurchaseAddress, type: :model do
         @purchase_address.valid?
         expect(@purchase_address.errors.full_messages).to include "Telephone number is out of setting range"
       end
-      it '電話番号が12桁以下では購入できない' do
+      it '電話番号が12桁以上では購入できない' do
         @purchase_address.telephone_number = "1234567890987"
         @purchase_address.valid?
         expect(@purchase_address.errors.full_messages).to include "Telephone number is out of setting range"
