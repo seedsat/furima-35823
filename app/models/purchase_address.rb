@@ -10,11 +10,11 @@ class PurchaseAddress
     validates :city
     validates :house_number
     validates :telephone_number, numericality: { only_integer: true, message: "is invalid. Input only number" }
-    validates :telephone_number, format: { with: /\A\d{10,11}\z/, message: 'is out of setting range' }
     validates :token
     validates :user_id
     validates :item_id
   end
+  validates :telephone_number, format: { with: /\A\d{10,11}\z/, message: 'is out of setting range' }
 
   def save
     purchase = Purchase.create(user_id: user_id, item_id: item_id)
