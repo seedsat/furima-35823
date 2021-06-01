@@ -2,7 +2,7 @@ class PurchaseAddress
 
   include ActiveModel::Model
   attr_accessor :postal_code, :prefecture_id, :city, :house_number,
-                :telephone_number, :building_name, :token, :user_id, :item_id, :purchase_id
+                :telephone_number, :building_name, :token, :user_id, :item_id
 
   with_options presence: true do
     validates :postal_code, format: { with: /\A\d{3}-\d{4}\z/, message: "is invalid. Include hyphen(-)" }
@@ -13,6 +13,7 @@ class PurchaseAddress
     validates :telephone_number, format: { with: /\A\d{10,11}\z/, message: 'is out of setting range' }
     validates :token
     validates :user_id
+    validates :item_id
   end
 
   def save
