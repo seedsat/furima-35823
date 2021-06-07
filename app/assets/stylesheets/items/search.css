@@ -1,0 +1,46 @@
+.search-wrapper {
+  display: flex;
+  background-color: #eaedf7;
+}
+
+.l-contents {
+  width: 300px;
+  height: 500px;
+  background-color: #fff;
+  margin: 30px 50px 0 200px;
+}
+
+.r-contents {
+  width: calc(100% - 300px);
+  margin-right: 200px;
+}
+
+.search-header {
+  margin: 30px 0;
+}
+
+.search-box {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.search-item {
+  width: 160px;
+  height: 200px;
+  margin: 10px;
+}
+
+.item-image {
+  height: 130px;
+  background-color: gold;
+}
+
+.item-name {
+  font-size: 16px;
+  margin-left: 10px;
+}
+
+.item-price {
+  font-size: 14px;
+  margin-left: 10px;
+}
