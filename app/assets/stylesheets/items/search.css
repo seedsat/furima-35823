@@ -12,7 +12,6 @@
 
 .r-contents {
   width: calc(100% - 300px);
-  margin-right: 200px;
 }
 
 .search-header {
@@ -24,13 +23,17 @@
   flex-wrap: wrap;
 }
 
+.search-box a {
+  color: #000;
+}
+
 .search-item {
   margin: 10px;
+  background-color: white;
 }
 
 .item-image {
   width: 160px;
-  height: 130px;
 }
 
 .item-image img {
@@ -39,9 +42,10 @@
 
 .item-name {
   font-size: 16px;
-  margin-top: 40px;
+  margin-left: 5px;
 }
 
 .item-price {
   font-size: 14px;
+  padding: 20px 0 10px 5px;
 }

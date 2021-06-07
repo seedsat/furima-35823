@@ -8,17 +8,19 @@
     </div>
     <div class="search-box">
       <% @results.each do |result| %>
-        <div class="search-item">
-          <div class="item-image">
-            <%= image_tag result.image %>
+        <%= link_to item_path(result) do %>
+          <div class="search-item">
+            <div class="item-image">
+              <%= image_tag result.image %>
+            </div>
+            <div class="item-name">
+              <%= result.name %>
+            </div>
+            <div class="item-price">
+              <b>￥<%= result.price %></b>
+            </div>
           </div>
-          <div class="item-name">
-            <%= result.name %>
-          </div>
-          <div class="item-price">
-            ￥<%= result.price %>
-          </div>
-        </div>
+        <% end %>
       <% end %>
     </div>
   </div>
