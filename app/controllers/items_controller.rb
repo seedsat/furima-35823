@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   before_action :find_item, only: [:show, :edit, :update, :destroy]
   before_action :move_index, only: [:edit, :update, :destroy]
   before_action :sold_out_move_index, only: [:edit, :update, :destroy]
-  before_action :search_items, only: [:index, :search]
+  before_action :search_items, only: [:index, :search, :show]
 
   def index
     @items = Item.includes(:user).order('created_at desc')
