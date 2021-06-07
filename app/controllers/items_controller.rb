@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
   before_action :find_item, only: [:show, :edit, :update, :destroy]
   before_action :move_index, only: [:edit, :update, :destroy]
   before_action :sold_out_move_index, only: [:edit, :update, :destroy]
+  before_action :search_items, only: [:index, :search]
 
   def index
     @items = Item.includes(:user).order('created_at desc')
@@ -42,6 +43,7 @@ class ItemsController < ApplicationController
   end
 
   def search
+    @results = @i.result.includes(:user)
   end
 
   private
@@ -63,5 +65,9 @@ class ItemsController < ApplicationController
     if @item.purchase.present?
       redirect_to root_path
     end
+  end
+
+  def search_items
+    @i = Item.ransack(params[:q])
   end
 end

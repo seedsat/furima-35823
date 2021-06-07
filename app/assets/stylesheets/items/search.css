@@ -25,22 +25,23 @@
 }
 
 .search-item {
-  width: 160px;
-  height: 200px;
   margin: 10px;
 }
 
 .item-image {
+  width: 160px;
   height: 130px;
-  background-color: gold;
+}
+
+.item-image img {
+  width: 160px;
 }
 
 .item-name {
   font-size: 16px;
-  margin-left: 10px;
+  margin-top: 40px;
 }
 
 .item-price {
   font-size: 14px;
-  margin-left: 10px;
 }

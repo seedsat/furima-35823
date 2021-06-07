@@ -1,103 +1,25 @@
 <%= render "shared/header" %>
-
 <div class="search-wrapper">
   <div class="l-contents">
   </div>
   <div class="r-contents">
     <div class="search-header">
-      <h2>テストでの検索結果</h2>
+      <h2><%= params[:q][:name_cont] %>での検索結果</h2>
     </div>
     <div class="search-box">
-      <div class="search-item">
-        <div class="item-image">
+      <% @results.each do |result| %>
+        <div class="search-item">
+          <div class="item-image">
+            <%= image_tag result.image %>
+          </div>
+          <div class="item-name">
+            <%= result.name %>
+          </div>
+          <div class="item-price">
+            ￥<%= result.price %>
+          </div>
         </div>
-        <div class="item-name">
-          テスト生写真
-        </div>
-        <div class="item-price">
-          ￥1.000
-        </div>
-      </div>
-      <div class="search-item">
-        <div class="item-image">
-        </div>
-        <div class="item-name">
-          テスト生写真
-        </div>
-        <div class="item-price">
-          ￥1.000
-        </div>
-      </div>
-      <div class="search-item">
-        <div class="item-image">
-        </div>
-        <div class="item-name">
-          テスト生写真
-        </div>
-        <div class="item-price">
-          ￥1.000
-        </div>
-      </div>
-      <div class="search-item">
-        <div class="item-image">
-        </div>
-        <div class="item-name">
-          テスト生写真
-        </div>
-        <div class="item-price">
-          ￥1.000
-        </div>
-      </div>
-      <div class="search-item">
-        <div class="item-image">
-        </div>
-        <div class="item-name">
-          テスト生写真
-        </div>
-        <div class="item-price">
-          ￥1.000
-        </div>
-      </div>
-      <div class="search-item">
-        <div class="item-image">
-        </div>
-        <div class="item-name">
-          テスト生写真
-        </div>
-        <div class="item-price">
-          ￥1.000
-        </div>
-      </div>
-      <div class="search-item">
-        <div class="item-image">
-        </div>
-        <div class="item-name">
-          テスト生写真
-        </div>
-        <div class="item-price">
-          ￥1.000
-        </div>
-      </div>
-      <div class="search-item">
-        <div class="item-image">
-        </div>
-        <div class="item-name">
-          テスト生写真
-        </div>
-        <div class="item-price">
-          ￥1.000
-        </div>
-      </div>
-      <div class="search-item">
-        <div class="item-image">
-        </div>
-        <div class="item-name">
-          テスト生写真
-        </div>
-        <div class="item-price">
-          ￥1.000
-        </div>
-      </div>
+      <% end %>
     </div>
   </div>
 </div>
