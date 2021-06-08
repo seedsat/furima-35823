@@ -69,6 +69,11 @@
         <%= link_to item_path(result) do %>
           <div class="search-item">
             <div class="item-image">
+              <% if result.purchase.present? %>
+                <div class="image-flag">
+                  <span>Sold Out!</span>
+                </div>
+              <% end %>
               <%= image_tag result.image %>
             </div>
             <div class="item-name">

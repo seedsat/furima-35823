@@ -96,6 +96,17 @@
   width: 160px;
 }
 
+.image-flag {
+  position: absolute;
+  border-left: 100px solid red;
+}
+
+.image-flag span {
+  position: relative;
+  color: white;
+  right: 80px;
+}
+
 .item-image img {
   width: 160px;
   height: 160px;

@@ -44,7 +44,6 @@ class ItemsController < ApplicationController
 
   def search
     @results = @i.result.includes(:user)
-    #binding.pry
   end
 
   private
