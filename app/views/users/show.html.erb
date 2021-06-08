@@ -1,3 +1,50 @@
 <%= render "shared/mypage-header" %>
 
+<div class="mypage-wrapper">
+  <div class="mypage-contents">
+    <div class="left-side">
+      <nav class="left-content">
+        <h3>設定</h3>
+        <ul class="mypage-nav-lists">
+          <li class="mypage-list"><%= link_to 'プロフィール', edit_user_registration_path %><i class="fas fa-caret-right fa-lg"></i></li>
+          <li class="mypage-list"><%= link_to '出品する', new_item_path %><i class="fas fa-caret-right fa-lg"></i></li>
+          <li class="mypage-list"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %><i class="fas fa-caret-right fa-lg"></i></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="right-side">
+    <h1><span><%= current_user.nickname %></span>さんのマイページ</h1>
+      <div class="tab-wrap">
+        <input id="TAB-01" type="radio" name="TAB" class="tab-switch" checked="checked" /><label class="tab-label" for="TAB-01">出品中</label>
+        <div class="tab-content">
+          <ul class="mypage-item-lists">
+          <% @user.items.each do |item| %>
+            <% if item.purchase.nil? %>
+            <li class="mypage-item">
+              <div class="mypage-item-text">【<%= item.name %>】</div>
+              <div class="mypage-item-text">出品日：<%= l item.created_at %></div>
+            </li>
+            <% end %>
+          <% end %>
+          </ul>
+        </div>
+        <input id="TAB-02" type="radio" name="TAB" class="tab-switch" /><label class="tab-label" for="TAB-02">売約済</label>
+        <div class="tab-content">
+          <ul class="mypage-item-lists">
+            <% @user.items.each do |item| %>
+            <% if item.purchase.present? %>
+            <li class="mypage-item">
+              <div class="mypage-item-text">【<%= item.name %>】</div>
+              <div class="mypage-item-text">出品日：<%= l item.created_at %></div>
+              <div class="mypage-item-text">売却日：<%= l item.purchase.created_at %></div>
+            </li>
+            <% end %>
+          <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <%= render "shared/footer" %>

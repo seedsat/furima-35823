@@ -5,16 +5,16 @@ class PurchaseAddress
                 :telephone_number, :building_name, :token, :user_id, :item_id
 
   with_options presence: true do
-    validates :postal_code, format: { with: /\A\d{3}-\d{4}\z/, message: "is invalid. Include hyphen(-)" }
-    validates :prefecture_id, numericality: { other_than: 1, message: "can't be blank" }
+    validates :postal_code, format: { with: /\A\d{3}-\d{4}\z/, message: "はハイフンを入れて入力してください" }
+    validates :prefecture_id, numericality: { other_than: 1, message: "は選択してください" }
     validates :city
     validates :house_number
-    validates :telephone_number, numericality: { only_integer: true, message: "is invalid. Input only number" }
+    validates :telephone_number, numericality: { only_integer: true, message: "は数字のみで入力してください" }
     validates :token
     validates :user_id
     validates :item_id
   end
-  validates :telephone_number, format: { with: /\A\d{10,11}\z/, message: 'is out of setting range' }
+  validates :telephone_number, format: { with: /\A\d{10,11}\z/, message: 'は桁数が違います' }
 
   def save
     purchase = Purchase.create(user_id: user_id, item_id: item_id)
