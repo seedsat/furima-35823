@@ -44,13 +44,14 @@ class ItemsController < ApplicationController
 
   def search
     @results = @i.result.includes(:user)
+    #binding.pry
   end
 
   private
 
   def item_params
-    params.require(:item).permit(:image, :name, :info, :category_id, :itemstatus_id, :deliverycharge_id, :prefecture_id,
-                                 :shippingday_id, :price).merge(user_id: current_user.id)
+    params.require(:item).permit(:image, :name, :info, :category_id, :prefecture_id,
+                                 :shippingday_id, :price, :itemstatus_id, :deliverycharge_id).merge(user_id: current_user.id)
   end
 
   def find_item
