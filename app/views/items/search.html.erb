@@ -1,10 +1,68 @@
 <%= render "shared/header" %>
 <div class="search-wrapper">
   <div class="l-contents">
+    <%= search_form_for @i, url: search_items_path do |f| %>
+      <div class="detail-search">
+        <h3>詳細検索</h3>
+        <div class="search-group">
+          <i class="fas fa-list"></i> カテゴリーを選択する
+          <%= f.collection_select(:category_id_eq, Category.all, :id, :name, {prompt: "選択してください"}, {class:"select-box select-field", id:"item-category"}) %>
+        </div>
+      </div>
+      <div class="detail-search">
+        <div class="search-group">
+            <i class="fas fa-yen-sign"></i> 価格<br>
+            <%= f.text_field :price_eq, class: "price-field", placeholder: "価格を入力してください" %>
+            <div class="min-max-field">
+              <%= f.text_field :price_gteq, class: "minmax-price-field", placeholder: "¥ 下限" %>
+              ~
+              <%= f.text_field :price_lteq, class: "minmax-price-field", placeholder: "¥ 上限" %>
+            </div>
+        </div>
+      </div>
+      <div class="detail-search">
+        <div class="search-group">
+            <i class="far fa-heart"></i> 商品の状態
+              <ul>
+                <%= f.collection_check_boxes(:itemstatus_id_eq_any, Itemstatus.where.not(id: 1), :id, :name, {multiple: true, include_hidden: false, id: "status-check-box"}) do |cb| %>
+                <li>
+                  <%= cb.check_box %>
+                  <%= cb.label %>
+                </li>
+                <% end %>
+              </ul>
+        </div>
+      </div>
+      <div class="detail-search">
+        <div class="search-group">
+          <i class="fas fa-shipping-fast"></i> 配送料の負担
+          <div class="cearch-check">
+            <ul>
+              <%= f.collection_check_boxes(:deliverycharge_id_eq_any, Deliverycharge.where.not(id: 1), :id, :name, {multiple: true, include_hidden: false}, {class:"status-check-box"}) do |cb| %>
+              <li>
+                <%= cb.check_box %>
+                <%= cb.label %>
+              </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <%= f.submit "検索", class: "search-submit" %>
+      <%= f.submit "クリア", type: :reset ,class: "search-clear" %>
+    <% end %>
   </div>
   <div class="r-contents">
     <div class="search-header">
-      <h2><%= params[:q][:name_cont] %>での検索結果</h2>
+      <% if params[:q][:name_cont].present? %>
+        <span><%= params[:q][:name_cont] %></span>の検索結果
+      <% else %>
+        <% if @results.present? %>
+          <span>検索結果</span>
+        <% else %>
+          <span>検索結果はありません</span>
+        <% end %>
+      <% end %>
     </div>
     <div class="search-box">
       <% @results.each do |result| %>
@@ -14,7 +72,7 @@
               <%= image_tag result.image %>
             </div>
             <div class="item-name">
-              <%= result.name %>
+              <%= result.name.truncate(10, omission: '...') %>
             </div>
             <div class="item-price">
               <b>￥<%= result.price %></b>
@@ -25,5 +83,8 @@
     </div>
   </div>
 </div>
-
+<%= link_to(new_item_path, class: 'purchase-btn') do %>
+  <span class='purchase-btn-text'>出品する</span>
+  <%= image_tag 'icon_camera.png' , size: '185x50' ,class: "purchase-btn-icon" %>
+<% end %>
 <%= render "shared/footer" %>
