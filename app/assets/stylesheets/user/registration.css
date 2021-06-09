@@ -33,6 +33,7 @@
   flex-direction: column;
   margin: 0 auto;
   padding-top: 20px;
+  margin-bottom: 30px;
 }
 
 .form-group:first-child {
