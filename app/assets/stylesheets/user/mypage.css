@@ -40,7 +40,7 @@
 
 .mypage-list {
   background-color: white;
-  padding: 10px;
+  padding: 20px;
   position: relative;
 }
 
@@ -66,6 +66,11 @@
 .mypage-nav-lists li {
   border-top: solid 1px #eee;
 }
+
+.mypage-nav-lists a {
+  text-decoration: none;
+}
+
 /* タブ */
 .tab-wrap {
   display: flex;
@@ -82,12 +87,13 @@
 }
 .tab-label {
   color: White;
+  font-size: 20px;
   background: LightGray;
   font-weight: bold;
   text-shadow: 0 -1px 0 rgba(0,0,0,.2);
   white-space: nowrap;
   text-align: center;
-  padding: 10px .5em;
+  padding: 20px .5em;
   order: -1;
   position: relative;
   z-index: 1;
@@ -128,12 +134,18 @@
 
 .mypage-item-lists a {
   color: #000;
+  text-decoration: none;
 }
 
 .mypage-item {
   border-top: solid 1px #eee;
   padding: 10px;
   display: flex;
+}
+
+.mypage-item-text {
+  font-size: 18px;
+  margin-bottom: 10px;
 }
 
 .mypage-item-text a {

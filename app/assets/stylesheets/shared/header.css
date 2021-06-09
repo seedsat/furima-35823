@@ -58,6 +58,7 @@
   flex-wrap: wrap;
   width: 100%;
   padding: 1vh 0;
+  margin-top: 10px;
 }
 
 .mypage-nav {
@@ -78,6 +79,10 @@
   color: #333333;
 }
 
+.lists-left li a:hover {
+  color: #000;
+}
+
 .brand-list {
   text-decoration: none;
   color: #333333;
@@ -87,6 +92,10 @@
   display: flex;
   list-style: none;
   align-items: flex-end;
+}
+
+.lists-right li a:hover {
+  color: #000;
 }
 
 .mypage-lists-right {
@@ -102,6 +111,10 @@
   margin-right: 3vw;
   color: #333333;
   font-weight: bold;
+}
+
+.user-nickname a:hover {
+  
 }
 
 

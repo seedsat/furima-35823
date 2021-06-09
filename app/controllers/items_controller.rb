@@ -6,7 +6,7 @@ class ItemsController < ApplicationController
   before_action :search_items, only: [:index, :search, :show]
 
   def index
-    @items = Item.includes(:user).order('created_at desc')
+    @items = Item.includes(:user).order('created_at desc').page(params[:page]).per(10)
   end
 
   def new
@@ -43,7 +43,7 @@ class ItemsController < ApplicationController
   end
 
   def search
-    @results = @i.result.includes(:user)
+    @results = @i.result.includes(:user).page(params[:page]).per(8)
   end
 
   private

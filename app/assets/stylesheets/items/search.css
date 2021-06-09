@@ -14,7 +14,8 @@
 
 .detail-search h3 {
   font-weight: bold;
-  padding: 10px;
+  padding: 20px 0;
+  font-size: 19px;
 }
 
 .select-field {
@@ -24,7 +25,7 @@
 
 .price-field {
   width: 246px;
-  padding: 10px;
+  padding: 15px;
   border: solid 1px #000;
   border-radius: 5px;
 }
@@ -35,7 +36,7 @@
 
 .minmax-price-field {
   width: 40%;
-  padding: 5px;
+  padding: 15px;
   border-radius: 5px;
   border: solid 1px #000;
 }
@@ -81,10 +82,12 @@
 .search-box {
   display: flex;
   flex-wrap: wrap;
+  margin-bottom: 50px;
 }
 
 .search-box a {
   color: #000;
+  text-decoration: none;
 }
 
 .search-item {
@@ -98,13 +101,14 @@
 
 .image-flag {
   position: absolute;
-  border-left: 100px solid red;
+  border-left: 120px solid red;
 }
 
 .image-flag span {
   position: relative;
   color: white;
-  right: 80px;
+  right: 100px;
+  font-size: 20px;
 }
 
 .item-image img {
@@ -115,6 +119,7 @@
 .item-name {
   font-size: 16px;
   margin-left: 5px;
+  margin-top: 5px;
 }
 
 .item-price {

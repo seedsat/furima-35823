@@ -66,3 +66,4 @@ gem "aws-sdk-s3", require: false
 gem 'ransack'
 gem 'font-awesome-sass'
 gem 'rails-i18n'
+gem 'kaminari'
