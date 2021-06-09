@@ -9,6 +9,12 @@
   flex-direction: column;
 }
 
+.top-mypage-header {
+  width: 100vw;
+  padding: 2vh 15vw;
+  display: flex;
+}
+
 .search-bar-contents {
   display: flex;
   justify-content: space-between;
@@ -54,6 +60,12 @@
   padding: 1vh 0;
 }
 
+.mypage-nav {
+  font-size: 18px;
+  width: 100%;
+  padding: 1vh 0;
+}
+
 .lists-left {
   display: flex;
   min-width: 200px;
@@ -75,6 +87,13 @@
   display: flex;
   list-style: none;
   align-items: flex-end;
+}
+
+.mypage-lists-right {
+  display: flex;
+  list-style: none;
+  align-items: flex-end;
+  float: right;
 }
 
 
