@@ -18,28 +18,41 @@
         <input id="TAB-01" type="radio" name="TAB" class="tab-switch" checked="checked" /><label class="tab-label" for="TAB-01">出品中</label>
         <div class="tab-content">
           <ul class="mypage-item-lists">
-          <% @user.items.each do |item| %>
-            <% if item.purchase.nil? %>
-            <li class="mypage-item">
-              <div class="mypage-item-text">【<%= link_to item.name, item_path(item) %>】</div>
-              <div class="mypage-item-text">出品日：<%= l item.created_at %></div>
-            </li>
+            <% @user.items.each do |item| %>
+              <% if item.purchase.nil? %>
+                <%= link_to item_path(item) do %>
+                  <li class="mypage-item">
+                    <div class="user-item-image">
+                      <%= image_tag item.image %>
+                    </div>
+                    <div class="mypage-item-content">
+                      <div class="mypage-item-text">【<%= item.name %>】</div>
+                      <div class="mypage-item-text">出品日：<%= l item.created_at %></div>
+                    </div>
+                  </li>
+                <% end %>
+              <% end %>
             <% end %>
-          <% end %>
           </ul>
         </div>
-        <input id="TAB-02" type="radio" name="TAB" class="tab-switch" /><label class="tab-label" for="TAB-02">売約済</label>
+        <input id="TAB-02" type="radio" name="TAB" class="tab-switch" /><label class="tab-label" for="TAB-02">売却済</label>
         <div class="tab-content">
           <ul class="mypage-item-lists">
             <% @user.items.each do |item| %>
-            <% if item.purchase.present? %>
-            <li class="mypage-item">
-              <div class="mypage-item-text">【<%= link_to item.name, item_path(item) %>】</div>
-              <div class="mypage-item-text">出品日：<%= l item.created_at %></div>
-              <div class="mypage-item-text">売却日：<%= l item.purchase.created_at %></div>
-            </li>
+              <% if item.purchase.present? %>
+                <%= link_to item_path(item) do %>
+                  <li class="mypage-item">
+                    <div class="user-item-image">
+                      <%= image_tag item.image %>
+                    </div>
+                    <div class="mypage-item-content">
+                      <div class="mypage-item-text">【<%= item.name %>】</div>
+                      <div class="mypage-item-text">出品日：<%= l item.created_at %></div>
+                    </div>
+                  </li>
+                <% end %>
+              <% end %>
             <% end %>
-          <% end %>
           </ul>
         </div>
       </div>

@@ -126,11 +126,25 @@
   border-top: none;
 }
 
+.mypage-item-lists a {
+  color: #000;
+}
+
 .mypage-item {
   border-top: solid 1px #eee;
   padding: 10px;
+  display: flex;
 }
 
 .mypage-item-text a {
   color: #000
+}
+
+.user-item-image {
+  margin-right: 30px;
+}
+
+.user-item-image img {
+  width: 70px;
+  height: 70px;
 }
