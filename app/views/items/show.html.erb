@@ -1,5 +1,8 @@
 <%= render "shared/header" %>
-
+<div class="breadcrumb-list">
+  <% breadcrumb :item_show, @item %>
+  <%= breadcrumbs separator: " &rsaquo; " %>
+</div>
 <div class="item-show">
   <div class="item-box">
     <h2 class="name">

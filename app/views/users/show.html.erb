@@ -1,5 +1,8 @@
 <%= render "shared/mypage-header" %>
-
+<div class="breadcrumb-list">
+  <% breadcrumb :user_show, @user %>
+  <%= breadcrumbs separator: " &rsaquo; " %>
+</div>
 <div class="mypage-wrapper">
   <div class="mypage-contents">
     <div class="left-side">

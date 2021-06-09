@@ -61,7 +61,11 @@
   font-weight: bold;
   color: #FFF;
   margin: 20px 0px;
-  padding: 2vh 10vw;
+  padding: 5vh 10vw;
+}
+
+.item-red-btn:hover {
+  color: #fff;
 }
 
 .or-text {
