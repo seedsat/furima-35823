@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root to: 'items#index'
   devise_for :users, controllers: { registrations: 'users/registrations' }
   resources :items do
+    resources :comments, only: [:create]
     resources :purchases, only: [:index, :create]
     collection do
       get 'search'
