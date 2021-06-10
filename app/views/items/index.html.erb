@@ -130,14 +130,17 @@
                   <span>Sold Out!!</span>
                 </div>
               <% end %>
-
             </div>
             <div class='item-info'>
               <h3 class='item-name'>
-                <%= item.name %>
+                <%= item.name.truncate(15, omission: '...') %>
               </h3>
               <div class='item-price'>
                 <span><%= item.price %>円<br><%= item.deliverycharge.name %></span>
+                <div class='star-btn'>
+                <i class="fas fa-comment-alt"></i>
+                  <span class='comment-count'><%= item.comments.count %></span>
+                </div>
                 <div class='star-btn'>
                   <%= image_tag "star.png", class:"star-icon" %>
                   <span class='star-count'>0</span>

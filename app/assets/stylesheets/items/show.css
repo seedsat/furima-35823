@@ -81,6 +81,10 @@
   padding: 2vh 10vw;
 }
 
+.item-destroy:hover {
+  color: black;
+}
+
 .item-explain-box {
   font-size: 18px;
   margin: 40px 0px;
@@ -183,20 +187,36 @@
   margin-bottom: 2vh;
 }
 
+.nocomment-btn {
+  line-height: 48px;
+  color: #fff;
+  min-width: 150px;
+  font-size: 18px;
+  border-radius: 100px;
+  margin-bottom: 2vh;
+  display: block;
+  padding: 20px;
+  margin: 30px 50px 0 50px;
+  background-color: lightslategrey;
+}
+
 .comment-flag {
   display: flex;
   justify-content: center;
 }
 
 .comment-flag-icon {
-  margin: 10px 5px 0 0;
+  margin: -5px 5px 0 0;
 }
 
 .links {
   display: flex;
   justify-content: space-between;
   width: 50vw;
+}
 
+.change-item-btn:hover, .another-item:hover {
+  color: #3CCACE
 }
 
 .change-item-btn {

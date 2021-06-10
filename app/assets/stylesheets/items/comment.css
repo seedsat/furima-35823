@@ -1,0 +1,93 @@
+.comments-lists {
+  width: 100%;
+  margin: 1.5em 0;
+  overflow: hidden;
+}
+
+.comment-data {
+  margin-bottom: 20px;
+}
+
+.talk {
+  margin-bottom: 40px;
+}
+
+.talk-Ltxt p {
+  text-align: left;
+}
+
+p.talk-text:last-child {
+  margin-bottom: 0px;
+}
+
+/* 回り込み解除 */
+.talk:after,.talk:before {
+  clear: both;
+  content: "";
+  display: block;
+}
+
+  /* ----- 左の場合 ----- */
+
+ /* 左からの吹き出しテキスト */
+.talk-Ltxt {
+  color: #444;
+  position: relative;
+  margin: 0 15px 30px 15px;
+  padding: 1.2em;
+  border: 3px solid #9ce191;
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+/* 左の三角形を作る */
+.talk-Ltxt:before {
+  position: absolute;
+  content: '';
+  border: 10px solid transparent;
+  border-right: 10px solid #9ce191;
+  top: 15px;
+  left: -20px;
+}
+
+.talk-Ltxt:after {
+  position: absolute;
+  content: '';
+  border: 10px solid transparent;
+  border-right: 10px solid #fff;
+  top: 15px;
+  left: -16px;
+}
+
+/* 右からの吹き出しテキスト */
+.talk-Rtxt {
+  position: relative;
+  margin: 0 15px 30px 15px;
+  padding: 1.2em;
+  border: 3px solid #9ce191;
+  background-color: #ebffe7;
+  border-radius: 5px;
+  }
+
+  /* 右の三角形を作る */
+  .talk-Rtxt:before {
+  position: absolute;
+  content: '';
+  border: 10px solid transparent;
+  border-left: 10px solid #9ce191;
+  top: 15px;
+  right: -23px;
+  }
+
+  .talk-Rtxt:after {
+  position: absolute;
+  content: '';
+  border: 10px solid transparent;
+  border-left: 10px solid #ebffe7;
+  top: 15px;
+  right: -19px;
+  }
+
+  .talk-Rtxt p {
+    text-align: right;
+  }
