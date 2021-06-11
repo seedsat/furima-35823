@@ -299,6 +299,7 @@ a:hover {
   font-size: 1.5vh;
   display: flex;
   justify-content: space-between;
+  align-items: flex-end;
 }
 
 
@@ -317,8 +318,13 @@ a:hover {
   font-size: 2vh;
 }
 
-.comment-count {
+.comment-count, .good-count {
   margin-left: 5px;
+  color: #000;
+}
+
+.red {
+  color: red;
 }
 
 /* //商品一覧 */
@@ -371,3 +377,7 @@ label {
 }
 
 /* //ぱんクズ */
+
+#like-link:hover {
+  color: #000;
+}

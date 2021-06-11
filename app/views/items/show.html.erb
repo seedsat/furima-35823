@@ -68,14 +68,17 @@
       </tbody>
     </table>
     <div class="option">
-      <div class="favorite-btn">
-        <%= image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"%>
-        <span>お気に入り 0</span>
+      <div class="favorite-btn" id="good-btn">
+        <%= render 'item', locals: { item: @item } %>
       </div>
-      <div class="report-btn">
-        <%= image_tag "flag.png" ,class:"report-flag-icon" ,width:"20",height:"20"%>
-        <span>不適切な商品の通報</span>
-      </div>
+      <% if user_signed_in? %>
+        <% unless @item.purchase.present? %>
+        <div class="report-btn">
+            <%= image_tag "flag.png" ,class:"report-flag-icon" ,width:"20",height:"20"%>
+            <span>不適切な商品の通報</span>
+        </div>
+        <% end %>
+      <% end %>
     </div>
   </div>
 
@@ -87,28 +90,30 @@
         <br>
         不快な言葉遣いなどは利用制限や退会処分となることがあります。
       </p>
-      <% if @item.purchase.nil? %>
+      <% if @item.purchase.nil? && user_signed_in? %>
         <button type="submit" class="comment-btn">
           <%= image_tag "comment.png" ,class:"comment-flag-icon" ,width:"20",height:"25"%>
           <span>コメントする<span>
         </button>
       <% else %>
-        <span class="nocomment-btn">売却済みのためコメントはできません</span>
+        <span class="nocomment-btn">現在コメントはできません</span>
       <% end %>
     <% end %>
     <div class="comments-lists">
       <div class="talk">
         <% @comments.each do |comment| %>
-          <% if comment.user_id == current_user.id %>
-            <div class="talk-Rtxt">
-              <p class="comment-data">【投稿日：<%= l comment.created_at, format: :short %>】</p>
+          <% if user_signed_in? %>
+            <% if comment.user_id == current_user.id %>
+              <div class="talk-Rtxt">
+                <p class="comment-data">【投稿日：<%= l comment.created_at, format: :short %>】</p>
+                <p class="talk-text"><%= simple_format(h(comment.text)) %></p>
+                </div>
+            <% else %>
+              <div class="talk-Ltxt">
+              <p class="comment-data">【<%= comment.user.nickname %>さん】【<%= l comment.created_at, format: :short %>】</p>
               <p class="talk-text"><%= simple_format(h(comment.text)) %></p>
-              </div>
-          <% else %>
-            <div class="talk-Ltxt">
-            <p class="comment-data">【<%= comment.user.nickname %>さん】【<%= l comment.created_at, format: :short %>】</p>
-            <p class="talk-text"><%= simple_format(h(comment.text)) %></p>
-          </div>
+            </div>
+            <% end %>
           <% end %>
         <% end %>
       </div>
