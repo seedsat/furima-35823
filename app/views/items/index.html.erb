@@ -142,8 +142,14 @@
                   <span class='comment-count'><%= item.comments.count %></span>
                 </div>
                 <div class='star-btn'>
-                  <%= image_tag "star.png", class:"star-icon" %>
-                  <span class='star-count'>0</span>
+                  <% if user_signed_in? %>
+                    <% if current_user.liked_by?(item.id) %>
+                      <i class="fas fa-heart red"></i>
+                    <% else %>
+                      <i class="fas fa-heart"></i>
+                    <% end %>
+                  <% end %>
+                  <span class='good-count'><%= item.likes.count %></span>
                 </div>
               </div>
             </div>

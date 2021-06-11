@@ -1,8 +1,10 @@
 <%= render "shared/mypage-header" %>
+
 <div class="breadcrumb-list">
   <% breadcrumb :user_show, @user %>
   <%= breadcrumbs separator: " &rsaquo; " %>
 </div>
+
 <div class="mypage-wrapper">
   <div class="mypage-contents">
     <div class="left-side">
@@ -21,40 +23,70 @@
         <input id="TAB-01" type="radio" name="TAB" class="tab-switch" checked="checked" /><label class="tab-label" for="TAB-01">出品中</label>
         <div class="tab-content">
           <ul class="mypage-item-lists">
-            <% @user.items.each do |item| %>
-              <% if item.purchase.nil? %>
-                <%= link_to item_path(item) do %>
-                  <li class="mypage-item">
-                    <div class="user-item-image">
-                      <%= image_tag item.image %>
-                    </div>
-                    <div class="mypage-item-content">
-                      <div class="mypage-item-text">【<%= item.name %>】</div>
-                      <div class="mypage-item-text">出品日：<%= l item.created_at %></div>
-                    </div>
-                  </li>
+            <% if @user.items.present? %>
+              <% @user.items.each do |item| %>
+                <% if item.purchase.nil? %>
+                  <%= link_to item_path(item) do %>
+                    <li class="mypage-item">
+                      <div class="user-item-image">
+                        <%= image_tag item.image %>
+                      </div>
+                      <div class="mypage-item-content">
+                        <div class="mypage-item-text">【<%= item.name %>】</div>
+                        <div class="mypage-item-text">出品日：<%= l item.created_at, format: :short %></div>
+                      </div>
+                    </li>
+                  <% end %>
                 <% end %>
               <% end %>
+            <% else %>
+              出品中の商品はありません
             <% end %>
           </ul>
         </div>
         <input id="TAB-02" type="radio" name="TAB" class="tab-switch" /><label class="tab-label" for="TAB-02">売却済</label>
         <div class="tab-content">
           <ul class="mypage-item-lists">
-            <% @user.items.each do |item| %>
-              <% if item.purchase.present? %>
-                <%= link_to item_path(item) do %>
+            <%if @user.items.present?%>
+              <% @user.items.each do |item| %>
+                <% if item.purchase.present?%>
+                  <%= link_to item_path(item) do %>
+                    <li class="mypage-item">
+                      <div class="user-item-image">
+                        <%= image_tag item.image %>
+                      </div>
+                      <div class="mypage-item-content">
+                        <div class="mypage-item-text">【<%= item.name %>】</div>
+                        <div class="mypage-item-text">出品日：<%= l item.created_at, format: :short %>　売却日：<%= l item.purchase.created_at, format: :short %></div>
+                      </div>
+                    </li>
+                  <% end %>
+                <% end %>
+              <% end %>
+            <%else%>
+              売却済み商品はありません
+            <%end%>
+          </ul>
+        </div>
+        <input id="TAB-03" type="radio" name="TAB" class="tab-switch" /><label class="tab-label" for="TAB-03">いいね済</label>
+        <div class="tab-content">
+          <ul class="mypage-item-lists">
+            <% if @user.likes.present? %>
+              <% @user.likes.each do |good_item| %>
+                <%= link_to item_path(good_item.item.id) do %>
                   <li class="mypage-item">
                     <div class="user-item-image">
-                      <%= image_tag item.image %>
+                      <%= image_tag good_item.item.image %>
                     </div>
                     <div class="mypage-item-content">
-                      <div class="mypage-item-text">【<%= item.name %>】</div>
-                      <div class="mypage-item-text">出品日：<%= l item.created_at %></div>
+                      <div class="mypage-item-text">【<%= good_item.item.name %>】</div>
+                      <div class="mypage-item-text">出品日：<%= l good_item.item.created_at, format: :short %></div>
                     </div>
                   </li>
                 <% end %>
               <% end %>
+            <% else %>
+              いいね済みの商品はありません
             <% end %>
           </ul>
         </div>

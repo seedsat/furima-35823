@@ -24,7 +24,12 @@ class User < ApplicationRecord
     validates :first_name_kana
   end
 
+  has_many :likes
   has_many :items
   has_many :purchases
   has_many :comments
+
+  def liked_by?(item_id)
+    likes.where(item_id: item_id).exists?
+  end
 end
