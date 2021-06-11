@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   private
 
   def users_item
-    @user = User.find_by_id(params[:id])
+    @user = User.find(params[:id])
   end
 
   def move_index

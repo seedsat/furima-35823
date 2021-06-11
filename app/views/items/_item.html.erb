@@ -1,12 +1,16 @@
 <% if user_signed_in? %>
-  <% if @item.purchase.present? %>
-    <p class="no-good-btn">売却済みです</p>
-  <% elsif current_user.liked_by?(@item.id) %>
-    <i class="fas fa-heart"></i>
-    <%= link_to "いいねを外す!", destroy_like_path(@item), method: :delete, remote: true, id: "like-link" %><span class="good-count">（<%= @item.likes.count %>）</span>
-  <% else %>
-    <i class="far fa-heart"></i>
-    <%= link_to "いいね！", create_like_path(@item), method: :post, remote: true, id: "like-link" %><span class="good-count">（<%= @item.likes.count %>）</span>
+  <% if @item.user.id != current_user.id %>
+    <% if @item.purchase.present? %>
+      <p class="no-good-btn">売却済みです</p>
+    <% elsif current_user.liked_by?(@item.id) %>
+      <i class="fas fa-heart"></i>
+      <%= link_to "いいねを外す!", destroy_like_path(@item), method: :delete, remote: true, id: "like-link" %><span class="good-count">（<%= @item.likes.count %>）</span>
+    <% else %>
+      <i class="far fa-heart"></i>
+      <%= link_to "いいね！", create_like_path(@item), method: :post, remote: true, id: "like-link" %><span class="good-count">（<%= @item.likes.count %>）</span>
+    <% end %>
+  <% else%>
+    <span class="good-count">いいね！（<%= @item.likes.count %>）</span>
   <% end %>
 <% else %>
   <%= link_to "ログインしてください", new_user_session_path, class: "login-good" %>
