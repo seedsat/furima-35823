@@ -25,18 +25,24 @@
           <ul class="mypage-item-lists">
             <% if @user.items.present? %>
               <% @user.items.each do |item| %>
-                <% if item.purchase.nil? %>
-                  <%= link_to item_path(item) do %>
-                    <li class="mypage-item">
-                      <div class="user-item-image">
-                        <%= image_tag item.image %>
+                <%= link_to item_path(item) do %>
+                  <li class="mypage-item">
+                    <% if item.purchase.present? %>
+                      <div class="item-soldout"><span>SOLD OUT!</span></div>
+                    <% end %>
+                    <div class="user-item-image">
+                      <%= image_tag item.image %>
+                    </div>
+                    <div class="mypage-item-content">
+                      <div class="mypage-item-text">【<%= item.name %>】</div>
+                      <div class="mypage-item-text">
+                        出品日：<%= l item.created_at, format: :short %>　
+                        <% if item.purchase.present? %>
+                         売却日：<%= l item.purchase.created_at, format: :short %>
+                        <% end %>
                       </div>
-                      <div class="mypage-item-content">
-                        <div class="mypage-item-text">【<%= item.name %>】</div>
-                        <div class="mypage-item-text">出品日：<%= l item.created_at, format: :short %></div>
-                      </div>
-                    </li>
-                  <% end %>
+                    </div>
+                  </li>
                 <% end %>
               <% end %>
             <% else %>
@@ -44,28 +50,26 @@
             <% end %>
           </ul>
         </div>
-        <input id="TAB-02" type="radio" name="TAB" class="tab-switch" /><label class="tab-label" for="TAB-02">売却済</label>
+        <input id="TAB-02" type="radio" name="TAB" class="tab-switch" /><label class="tab-label" for="TAB-02">購入済</label>
         <div class="tab-content">
           <ul class="mypage-item-lists">
-            <%if @user.items.present?%>
-              <% @user.items.each do |item| %>
-                <% if item.purchase.present?%>
-                  <%= link_to item_path(item) do %>
+            <% if @user.purchases.present? %>
+              <% @user.purchases.each do |purchase| %>
+                  <%= link_to item_path(purchase.item_id) do %>
                     <li class="mypage-item">
                       <div class="user-item-image">
-                        <%= image_tag item.image %>
+                        <%= image_tag purchase.item.image %>
                       </div>
                       <div class="mypage-item-content">
-                        <div class="mypage-item-text">【<%= item.name %>】</div>
-                        <div class="mypage-item-text">出品日：<%= l item.created_at, format: :short %>　売却日：<%= l item.purchase.created_at, format: :short %></div>
+                        <div class="mypage-item-text">【<%= purchase.item.name %>】</div>
+                        <div class="mypage-item-text">出品日：<%= l purchase.item.created_at, format: :short %>　購入日：<%= l purchase.item.purchase.created_at, format: :short %></div>
                       </div>
                     </li>
                   <% end %>
-                <% end %>
               <% end %>
-            <%else%>
-              売却済み商品はありません
-            <%end%>
+            <% else %>
+              購入した商品はありません
+            <% end %>
           </ul>
         </div>
         <input id="TAB-03" type="radio" name="TAB" class="tab-switch" /><label class="tab-label" for="TAB-03">いいね済</label>

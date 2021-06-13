@@ -237,3 +237,16 @@
 .login-good:hover, .no-good-btn {
   color: #000;
 }
+
+.item-soldout {
+  width: 70px;
+  height: 70px;
+  background-color: red;
+  position: absolute;
+  padding: 2px;
+}
+
+.item-soldout span {
+  color: white;
+  font-size: 20px;
+}
