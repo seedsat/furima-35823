@@ -79,6 +79,9 @@
               <% @user.likes.each do |good_item| %>
                 <%= link_to item_path(good_item.item.id) do %>
                   <li class="mypage-item">
+                    <% if good_item.item.purchase.present? %>
+                      <div class="item-soldout"><span>SOLD OUT!</span></div>
+                    <% end %>
                     <div class="user-item-image">
                       <%= image_tag good_item.item.image %>
                     </div>
