@@ -70,6 +70,11 @@ class ItemsController < ApplicationController
   end
 
   def search_items
-    @i = Item.ransack(params[:q])
+    if params[:q].present? && params[:q][:category_id_eq] == "1"
+      params[:q][:category_id_eq] = ""
+      @i = Item.ransack(params[:q])
+    else
+      @i = Item.ransack(params[:q])
+    end
   end
 end
