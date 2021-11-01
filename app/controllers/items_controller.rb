@@ -4,7 +4,8 @@ class ItemsController < ApplicationController
   before_action :move_index, only: [:edit, :update, :destroy]
   before_action :sold_out_move_index, only: [:edit, :update, :destroy]
   before_action :search_items, only: [:index, :search, :show]
-
+  
+   # 一覧ページ
   def index
     @items = Item.includes(:user).order('created_at desc').page(params[:page]).per(10)
   end
